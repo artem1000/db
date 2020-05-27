@@ -50,6 +50,14 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.5</version>
         </dependency>
+
+<!--        LiquiBase -->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>3.9.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>

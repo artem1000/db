@@ -1,0 +1,516 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <changeSet author="agrinchenko (generated)" id="1590587308606-1">
+        <createTable catalogName="dsstest" schemaName="dbo" tableName="DtIndividual_large">
+            <column name="DiCustId" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsNameSalutation" type="varchar(10)"/>
+            <column name="DsFrenchNameSalutation" type="varchar(10)"/>
+            <column name="DsFirstName" type="varchar(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsMiddleName" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsLastName" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsNameSuffix" type="varchar(15)"/>
+            <column name="DsKnownAs" type="varchar(20)"/>
+            <column name="DdDateOfBirth" type="datetime"/>
+            <column name="DiProofOfAgeFlag" type="tinyint"/>
+            <column name="DdDeathDate" type="datetime"/>
+            <column name="DiSpokenLanguage" type="tinyint"/>
+            <column name="DiGender" type="tinyint"/>
+            <column name="DiMaritialStatus" type="tinyint"/>
+            <column name="DsSocialInsuranceNumber" type="varchar(9)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsTaxExemptNumber" type="varchar(9)"/>
+            <column name="DsTaxExemptReason" type="tinyint"/>
+            <column name="DiIndividualStatus" type="tinyint"/>
+            <column name="DsSoundExCode" type="varchar(6)"/>
+            <column name="DiCrossSellFlag" type="tinyint"/>
+            <column name="DiCorrespondLang" type="tinyint"/>
+            <column name="DiCommunicateVia" type="tinyint"/>
+            <column name="DiEmail" type="tinyint"/>
+            <column name="DiProducerDisplayContactInfo" type="int"/>
+            <column name="DsProducerBusinessName" type="varchar(50)"/>
+            <column name="DsLastUpdateUserId" type="varchar(8)"/>
+            <column name="DiThreshold" type="int"/>
+            <column name="DsBusinessNumber" type="varchar(9)"/>
+            <column name="DiMemberConsent" type="int"/>
+            <column name="DdNotificationOfDeath" type="datetime"/>
+            <column name="DiMessageViewedIndicator" type="int"/>
+            <column name="DsSpouseFirstName" type="varchar(25)"/>
+            <column name="DsSpouseLastName" type="varchar(40)"/>
+            <column name="DdSpouseDateOfBirth" type="datetime"/>
+            <column name="DiFirstNations" type="int"/>
+            <column name="DiElectronicCommunication" type="int"/>
+            <column name="DiRepId" type="int"/>
+            <column name="diCustomerNotional" type="int"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="agrinchenko (generated)" id="1590587308606-2">
+        <createTable catalogName="dsstest" schemaName="dbo" tableName="other">
+            <column name="DsFirstName" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsLastName" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DdDateOfBirth" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsSocialInsuranceNumber" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="agrinchenko (generated)" id="1590587308606-3">
+        <createTable catalogName="dsstest" schemaName="dbo" tableName="DateTypes">
+            <column name="JustDate" type="date"/>
+            <column name="JustTime" type="time"/>
+            <column name="Small" type="smalldatetime"/>
+            <column name="Small2" type="datetime2"/>
+            <column name="NormalDate" type="datetime"/>
+            <column name="Offset8" type="datetimeoffset"/>
+            <column name="Offset9" type="datetimeoffset"/>
+            <column name="Offset10" type="datetimeoffset"/>
+            <column name="OffsetExtra" type="datetimeoffset"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="agrinchenko (generated)" id="1590587308606-4">
+        <createTable catalogName="dsstest" schemaName="dbo" tableName="UnicodeStringTypes">
+            <column name="JustChar" type="nchar(1)"/>
+            <column name="JustVarChar" type="nvarchar(10)"/>
+            <column name="JustText" type="nvarchar (max) (16)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="agrinchenko (generated)" id="1590587308606-5">
+        <createTable catalogName="dsstest" schemaName="dbo" tableName="DtIndividual_small">
+            <column name="DiCustId" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsNameSalutation" type="varchar(10)"/>
+            <column name="DsFrenchNameSalutation" type="varchar(10)"/>
+            <column name="DsFirstName" type="varchar(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsMiddleName" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsLastName" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsNameSuffix" type="varchar(15)"/>
+            <column name="DsKnownAs" type="varchar(20)"/>
+            <column name="DdDateOfBirth" type="datetime"/>
+            <column name="DiProofOfAgeFlag" type="tinyint"/>
+            <column name="DdDeathDate" type="datetime"/>
+            <column name="DiSpokenLanguage" type="tinyint"/>
+            <column name="DiGender" type="tinyint"/>
+            <column name="DiMaritialStatus" type="tinyint"/>
+            <column name="DsSocialInsuranceNumber" type="varchar(9)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsTaxExemptNumber" type="varchar(9)"/>
+            <column name="DsTaxExemptReason" type="tinyint"/>
+            <column name="DiIndividualStatus" type="tinyint"/>
+            <column name="DsSoundExCode" type="varchar(6)"/>
+            <column name="DiCrossSellFlag" type="tinyint"/>
+            <column name="DiCorrespondLang" type="tinyint"/>
+            <column name="DiCommunicateVia" type="tinyint"/>
+            <column name="DiEmail" type="tinyint"/>
+            <column name="DiProducerDisplayContactInfo" type="int"/>
+            <column name="DsProducerBusinessName" type="varchar(50)"/>
+            <column name="DsLastUpdateUserId" type="varchar(8)"/>
+            <column name="DiThreshold" type="int"/>
+            <column name="DsBusinessNumber" type="varchar(9)"/>
+            <column name="DiMemberConsent" type="int"/>
+            <column name="DdNotificationOfDeath" type="datetime"/>
+            <column name="DiMessageViewedIndicator" type="int"/>
+            <column name="DsSpouseFirstName" type="varchar(25)"/>
+            <column name="DsSpouseLastName" type="varchar(40)"/>
+            <column name="DdSpouseDateOfBirth" type="datetime"/>
+            <column name="DiFirstNations" type="int"/>
+            <column name="DiElectronicCommunication" type="int"/>
+            <column name="DiRepId" type="int"/>
+            <column name="diCustomerNotional" type="int"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="agrinchenko (generated)" id="1590587308606-6">
+        <createTable catalogName="dsstest" schemaName="dbo" tableName="ExampleTable">
+            <column name="PriKey" type="int">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK__ExampleT__0DAA475193966879"/>
+            </column>
+            <column name="timestamp" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="agrinchenko (generated)" id="1590587308606-7">
+        <createTable catalogName="dsstest" schemaName="dbo" tableName="StringTypes">
+            <column name="JustChar" type="char(1)"/>
+            <column name="JustVarChar" type="varchar(10)"/>
+            <column name="JustText" type="varchar (max) (16)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="agrinchenko (generated)" id="1590587308606-8">
+        <createTable catalogName="dsstest" schemaName="dbo" tableName="userdata">
+            <column name="DiCustId" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsFirstName" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsLastName" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DdDateOfBirth" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsSocialInsuranceNumber" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="agrinchenko (generated)" id="1590587308606-9">
+        <createTable catalogName="dsstest" schemaName="dbo" tableName="DtIndividual">
+            <column name="DiCustId" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsNameSalutation" type="varchar(10)"/>
+            <column name="DsFrenchNameSalutation" type="varchar(10)"/>
+            <column name="DsFirstName" type="varchar(25)"/>
+            <column name="DsMiddleName" type="varchar(20)"/>
+            <column name="DsLastName" type="varchar(40)"/>
+            <column name="DsNameSuffix" type="varchar(15)"/>
+            <column name="DsKnownAs" type="varchar(20)"/>
+            <column name="DdDateOfBirth" type="datetime"/>
+            <column name="DiProofOfAgeFlag" type="tinyint"/>
+            <column name="DdDeathDate" type="datetime"/>
+            <column name="DiSpokenLanguage" type="tinyint"/>
+            <column name="DiGender" type="tinyint"/>
+            <column name="DiMaritalStatus" type="tinyint"/>
+            <column name="DsSocialInsuranceNumber" type="varchar(9)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsTaxExemptNumber" type="varchar(9)"/>
+            <column name="DsTaxExemptReason" type="tinyint"/>
+            <column name="DiIndividualStatus" type="tinyint"/>
+            <column name="DsSoundExCode" type="varchar(6)"/>
+            <column name="DiCrossSellFlag" type="tinyint"/>
+            <column name="DiCorrespondLang" type="tinyint"/>
+            <column name="DiCommunicateVia" type="tinyint"/>
+            <column name="DiEmail" type="tinyint"/>
+            <column name="DiProducerDisplayContactInfo" type="int"/>
+            <column name="DsProducerBusinessName" type="varchar(50)"/>
+            <column name="DsLastUpdateUserId" type="varchar(8)"/>
+            <column name="DiThreshold" type="int"/>
+            <column name="DsBusinessNumber" type="varchar(9)"/>
+            <column name="DiMemberConsent" type="int"/>
+            <column name="DdNotificationOfDeath" type="datetime"/>
+            <column name="DiMessageViewedIndicator" type="int"/>
+            <column name="DsSpouseFirstName" type="varchar(25)"/>
+            <column name="DsSpouseLastName" type="varchar(40)"/>
+            <column name="DdSpouseDateOfBirth" type="datetime"/>
+            <column name="DiFirstNations" type="int"/>
+            <column name="DiElectronicCommunication" type="int"/>
+            <column name="DiRepId" type="int"/>
+            <column name="diCustomerNotional" type="int"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="agrinchenko (generated)" id="1590587308606-10">
+        <createTable catalogName="dsstest" schemaName="dbo" tableName="IntegerTypes">
+            <column name="JustBit" type="bit"/>
+            <column name="Tiny" type="tinyint"/>
+            <column name="Small" type="smallint"/>
+            <column name="Normal" type="int"/>
+            <column name="Big" type="bigint"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="agrinchenko (generated)" id="1590587308606-11">
+        <createTable catalogName="dsstest" schemaName="dbo" tableName="tableA">
+            <column name="colA" type="sql_variant"/>
+            <column name="colB" type="int"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="agrinchenko (generated)" id="1590587308606-12">
+        <createTable catalogName="dsstest" schemaName="dbo" tableName="DtIndividual_med">
+            <column name="DiCustId" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsNameSalutation" type="varchar(10)"/>
+            <column name="DsFrenchNameSalutation" type="varchar(10)"/>
+            <column name="DsFirstName" type="varchar(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsMiddleName" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsLastName" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsNameSuffix" type="varchar(15)"/>
+            <column name="DsKnownAs" type="varchar(20)"/>
+            <column name="DdDateOfBirth" type="datetime"/>
+            <column name="DiProofOfAgeFlag" type="tinyint"/>
+            <column name="DdDeathDate" type="datetime"/>
+            <column name="DiSpokenLanguage" type="tinyint"/>
+            <column name="DiGender" type="tinyint"/>
+            <column name="DiMaritialStatus" type="tinyint"/>
+            <column name="DsSocialInsuranceNumber" type="varchar(9)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsTaxExemptNumber" type="varchar(9)"/>
+            <column name="DsTaxExemptReason" type="tinyint"/>
+            <column name="DiIndividualStatus" type="tinyint"/>
+            <column name="DsSoundExCode" type="varchar(6)"/>
+            <column name="DiCrossSellFlag" type="tinyint"/>
+            <column name="DiCorrespondLang" type="tinyint"/>
+            <column name="DiCommunicateVia" type="tinyint"/>
+            <column name="DiEmail" type="tinyint"/>
+            <column name="DiProducerDisplayContactInfo" type="int"/>
+            <column name="DsProducerBusinessName" type="varchar(50)"/>
+            <column name="DsLastUpdateUserId" type="varchar(8)"/>
+            <column name="DiThreshold" type="int"/>
+            <column name="DsBusinessNumber" type="varchar(9)"/>
+            <column name="DiMemberConsent" type="int"/>
+            <column name="DdNotificationOfDeath" type="datetime"/>
+            <column name="DiMessageViewedIndicator" type="int"/>
+            <column name="DsSpouseFirstName" type="varchar(25)"/>
+            <column name="DsSpouseLastName" type="varchar(40)"/>
+            <column name="DdSpouseDateOfBirth" type="datetime"/>
+            <column name="DiFirstNations" type="int"/>
+            <column name="DiElectronicCommunication" type="int"/>
+            <column name="DiRepId" type="int"/>
+            <column name="diCustomerNotional" type="int"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="agrinchenko (generated)" id="1590587308606-13">
+        <createTable catalogName="dsstest" schemaName="dbo" tableName="ExactNumericTypes">
+            <column name="JustDecimal" type="decimal(8, 2)"/>
+            <column name="JustLongDecimal" type="decimal(18, 2)"/>
+            <column name="JustVeryLongDecimal" type="decimal(35, 20)"/>
+            <column name="JustNumeric" type="numeric(10, 5)"/>
+            <column name="JustSmallMoney" type="smallmoney"/>
+            <column name="JustMoney" type="money"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="agrinchenko (generated)" id="1590587308606-14">
+        <createTable catalogName="dsstest" schemaName="dbo" tableName="DtAgreementRemarks">
+            <column name="DiPolicyNumber" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DiPlanId" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DiPpsgId" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DiMembershipId" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DiRemarkId" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DiRemarkType" type="tinyint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DdDateCreated" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsUserId" type="varchar(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DsRemarks" type="varchar(MAX)"/>
+            <column name="DdRemarkEffDate" type="datetime"/>
+            <column name="DdRemarkTermDate" type="datetime"/>
+            <column name="DsLastUpdateUserId" type="varchar(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="timestamp" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DiPolicyNumber_PolicyLevel" type="int"/>
+            <column name="DiPolicyNumber_PlanLevel" type="int"/>
+            <column name="DiPolicyNumber_PpsgLevel" type="int"/>
+            <column name="DiPolicyNumber_MbrLevel" type="int"/>
+            <column name="DiPlanId_PlanLevel" type="int"/>
+            <column name="DiPlanId_PpsgLevel" type="int"/>
+            <column name="DiPlanId_MbrLevel" type="int"/>
+            <column name="DiPPSGIdLevel" type="int"/>
+            <column name="DiMembershipIdLevel" type="int"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="agrinchenko (generated)" id="1590587308606-15">
+        <createTable catalogName="dsstest" schemaName="dbo" tableName="ApproxNumericTypes">
+            <column name="JustFloat" type="float(24)"/>
+            <column name="GetReal" type="float(24)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="agrinchenko (generated)" id="1590587308606-16">
+        <createTable catalogName="dsstest" schemaName="dbo" tableName="DtCustomerTitleRestriction">
+            <column name="DiCustId" type="int"/>
+            <column name="DiThirdPartyCustId" type="int"/>
+            <column name="CustName" type="varchar(40)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="agrinchenko (generated)" id="1590587308606-17">
+        <createTable catalogName="dsstest" schemaName="dbo" tableName="variants">
+            <column name="value" type="sql_variant"/>
+            <column name="idx" type="int"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="agrinchenko (generated)" id="1590587308606-18">
+        <createTable catalogName="dsstest" schemaName="dbo" tableName="ExtraFields">
+            <column name="id" type="int"/>
+            <column name="tsmp" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="agrinchenko (generated)" id="1590587308606-19">
+        <createTable catalogName="dsstest" schemaName="dbo" tableName="BinaryTypes">
+            <column name="Idx" type="int"/>
+            <column name="Doc" type="varbinary(MAX)"/>
+            <column name="Post" type="int"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="agrinchenko (generated)" id="1590587308606-20">
+        <createTable catalogName="dsstest" schemaName="dbo" tableName="CustomPersonData">
+            <column name="Gender" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="GivenName" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NameSet" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Title" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="MiddleInitial" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Surname" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="StreetAddress" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="City" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="State" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="StateFull" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ZipCode" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Country" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CountryFull" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EmailAddress" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Username" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Password" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="BrowserUserAgent" type="nvarchar(150)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TelephoneNumber" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TelephoneCountryCode" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="MothersMaiden" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Birthday" type="datetime2">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Age" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TropicalZodiac" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CCType" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CCNumber" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CVV2" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CCExpires" type="datetime2">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NationalID" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="UPS" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="WesternUnionMTCN" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="MoneyGramMTCN" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Color" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Occupation" type="nvarchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Company" type="nvarchar(50)"/>
+            <column name="Vehicle" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Domain" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="BloodType" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Pounds" type="float(53)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Kilograms" type="float(53)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FeetInches" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Centimeters" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="GUID" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Latitude" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Longitude" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

@@ -26,17 +26,18 @@ public class FlyWayConnector {
         org.apache.log4j.Logger.getRootLogger().setLevel(org.apache.log4j.Level.OFF);
 
         Options opts = new Options();
-        Option filePath = new Option("c", CONNECTION_STRING_LBL, true, "Connection URL for the DB");
-        filePath.setRequired(true);
-        opts.addOption(filePath);
 
-        Option config = new Option("u", USERNAME_LBL, true, "User name");
-        config.setRequired(true);
-        opts.addOption(config);
+        Option urlOption = new Option("c", CONNECTION_STRING_LBL, true, "Connection URL for the DB");
+        urlOption.setRequired(true);
+        opts.addOption(urlOption);
 
-        Option runType = new Option("p", PASSWORD_LBL, true, "Password");
-        runType.setRequired(true);
-        opts.addOption(runType);
+        Option usrOption = new Option("u", USERNAME_LBL, true, "User name");
+        usrOption.setRequired(true);
+        opts.addOption(usrOption);
+
+        Option passwordOption = new Option("p", PASSWORD_LBL, true, "Password");
+        passwordOption.setRequired(true);
+        opts.addOption(passwordOption);
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = null;
 
@@ -58,13 +59,13 @@ public class FlyWayConnector {
 
         logger.info("Initiating connection to {} DB with userName {}, password {}", connectString, userName, password);
 
-        try (final Timer.Context ignoreMe = flyWayTimer.time()){
+        try (final Timer.Context ignore = flyWayTimer.time()){
             Flyway flyway = Flyway.configure().dataSource(connectString, userName, password).load();
             flyway.migrate();
         } catch (Exception e) {
             logger.error("Exception caught while executing FlyWay", e);
         }
 
-        logger.info("MeanRate for time to complete connection and migration {} ms, over {} events", flyWayTimer.getMeanRate(), flyWayTimer.getCount());
+        logger.info("MeanRate for time to complete connection and migration {} s, over {} events", flyWayTimer.getMeanRate(), flyWayTimer.getCount());
     }
 }
