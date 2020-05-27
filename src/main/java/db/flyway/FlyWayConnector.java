@@ -65,7 +65,6 @@ public class FlyWayConnector {
         } catch (Exception e) {
             logger.error("Exception caught while executing FlyWay", e);
         }
-
         logger.info("MeanRate for time to complete connection and migration {} s, over {} events", flyWayTimer.getMeanRate(), flyWayTimer.getCount());
     }
 }
