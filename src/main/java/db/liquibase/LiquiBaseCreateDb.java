@@ -14,7 +14,10 @@ import org.apache.commons.cli.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.sql.Connection;
+import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
@@ -29,6 +32,8 @@ public class LiquiBaseCreateDb {
     private static final String TRGT_USER = "t_user";
     private static final String TRGT_PSWD = "t_password";
     private static final String TRGT_DBNAME = "t_database";
+    private static final String TRGT_DRIVER = "t_driver";
+    private static final String TRGT_DRIVER_PATH = "t_driver_path";
 
     private static final String CHANGELOG_LOC = "src/main/resources/LiquiBaseChangeLog.xml";
     private static final Logger _logger = LogManager.getLogger(LiquiBaseCreateDb.class);
@@ -45,9 +50,22 @@ public class LiquiBaseCreateDb {
         org.apache.log4j.Logger.getRootLogger().setLevel(org.apache.log4j.Level.OFF);
         optionsHelper = new LiquiBaseCreateDb.OptionsHelper(args);
 
+        initializeDriver();
         _logger.info("Initiating connection to {} DB with userName {}, password {}", optionsHelper.getOptionValue(TRGT_URL), optionsHelper.getOptionValue(TRGT_USER) , optionsHelper.getOptionValue(TRGT_PSWD));
         spawnDb();
         _logger.info("MeanRate for time to complete generating changeLog {} s, over {} events", _liquiBaseTimer.getMeanRate(), _liquiBaseTimer.getCount());
+    }
+
+    private static void initializeDriver() {
+        try {
+            URL u = new URL(optionsHelper.getOptionValue(TRGT_DRIVER_PATH));
+            URLClassLoader ucl = new URLClassLoader(new URL[] {u});
+            Driver d = (Driver)Class.forName(optionsHelper.getOptionValue(TRGT_DRIVER), true, ucl).newInstance();
+            DriverManager.registerDriver(new DriverShim(d));
+            _logger.info("Driver {} was initialized OK", optionsHelper.getOptionValue(TRGT_DRIVER));
+        } catch (Exception e) {
+            _logger.error("Exception caught", e);
+        }
     }
 
     private static void spawnDb() {
@@ -154,6 +172,14 @@ public class LiquiBaseCreateDb {
             Option dbOption = new Option("td", TRGT_DBNAME, true, "Database");
             dbOption.setRequired(true);
             _opts.addOption(dbOption);
+
+            Option tDriverOption = new Option("tdrv", TRGT_DRIVER, true, "Target Driver");
+            tDriverOption.setRequired(true);
+            _opts.addOption(tDriverOption);
+
+            Option tDriverPathOption = new Option("tdrvp", TRGT_DRIVER_PATH, true, "Target Driver Path");
+            tDriverPathOption.setRequired(true);
+            _opts.addOption(tDriverPathOption);
 
             parseOptions(args);
         }

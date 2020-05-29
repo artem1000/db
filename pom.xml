@@ -57,21 +57,14 @@
             <artifactId>liquibase-core</artifactId>
             <version>3.9.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.26</version>
+        </dependency>
+
 
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-maven-plugin</artifactId>
-                <version>6.4.2</version>
-                <configuration>
-                    <driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver>
-                    <schemas>dbo</schemas>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-    
 </project>

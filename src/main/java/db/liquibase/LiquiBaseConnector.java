@@ -16,12 +16,15 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.PrintStream;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.sql.Driver;
 import java.sql.DriverManager;
 
 import static com.codahale.metrics.MetricRegistry.name;
 import static java.lang.System.exit;
 
-/* Auto-generates Change Log */
+/* Auto-generates Change Log. Works for MS-SQL and Oracle */
 
 public class LiquiBaseConnector {
     private static final String SRC_URL = "s_connection";
@@ -29,6 +32,8 @@ public class LiquiBaseConnector {
     private static final String SRC_PSWD = "s_password";
     private static final String SRC_DB_NAME = "s_database";
     private static final String SRC_DB_SCHEMA = "s_schema";
+    private static final String TRGT_DRIVER = "t_driver";
+    private static final String TRGT_DRIVER_PATH = "t_driver_path";
 
     private static final String CHANGELOG_LOC = "src/main/resources/LiquiBaseChangeLog.xml";
     private static final Logger _logger = LogManager.getLogger(LiquiBaseConnector.class);
@@ -41,12 +46,29 @@ public class LiquiBaseConnector {
         org.apache.log4j.Logger.getRootLogger().setLevel(org.apache.log4j.Level.OFF);
         optionsHelper = new LiquiBaseConnector.OptionsHelper(args);
         _logger.info("Initiating connection to {} DB with userName {}, password {}", optionsHelper.getOptionValue(SRC_URL), optionsHelper.getOptionValue(SRC_USERNAME), optionsHelper.getOptionValue(SRC_PSWD));
+       initializeDriver();
+
         liftSchemaFromSource();
         _logger.info("MeanRate for time to complete generating changeLog {} s, over {} events", _liquiBaseTimer.getMeanRate(), _liquiBaseTimer.getCount());
     }
 
+    private static void initializeDriver() {
+        try {
+            URL u = new URL(optionsHelper.getOptionValue(TRGT_DRIVER_PATH));
+            URLClassLoader ucl = new URLClassLoader(new URL[] {u});
+            Driver d = (Driver)Class.forName(optionsHelper.getOptionValue(TRGT_DRIVER), true, ucl).newInstance();
+            DriverManager.registerDriver(new DriverShim(d));
+            _logger.info("Driver {} was initialized OK", optionsHelper.getOptionValue(TRGT_DRIVER));
+        } catch (Exception e) {
+            _logger.error("Exception caught", e);
+        }
+    }
+
     private static void liftSchemaFromSource() {
-        String connectString = optionsHelper.getOptionValue(SRC_URL) + "; database="+ optionsHelper.getOptionValue(SRC_DB_NAME)+ ";"; // We need to be within the database of interest in order to lift the schema
+        String connectString = optionsHelper.getOptionValue(SRC_URL);
+        if (optionsHelper.getOptionValue(SRC_DB_NAME) != null){
+            connectString = optionsHelper.getOptionValue(SRC_URL) + "; database="+ optionsHelper.getOptionValue(SRC_DB_NAME)+ ";"; // We need to be within the database of interest in order to lift the schema
+        }
         try (java.sql.Connection connection = DriverManager.getConnection(connectString, optionsHelper.getOptionValue(SRC_USERNAME), optionsHelper.getOptionValue(SRC_PSWD));
              final Timer.Context ignored = _liquiBaseTimer.time()){
             Database database = DatabaseFactory.getInstance().findCorrectDatabaseImplementation(new JdbcConnection(connection));
@@ -86,7 +108,7 @@ public class LiquiBaseConnector {
             _opts.addOption(userOption);
 
             Option dbnameOption = new Option("sd", SRC_DB_NAME, true, "Database");
-            dbnameOption.setRequired(true);
+            dbnameOption.setRequired(false);
             _opts.addOption(dbnameOption);
 
             Option schemaNameOption = new Option("ss", SRC_DB_SCHEMA, true, "Schema");
@@ -96,6 +118,15 @@ public class LiquiBaseConnector {
             Option passwordOption = new Option("sp", SRC_PSWD, true, "Password");
             passwordOption.setRequired(true);
             _opts.addOption(passwordOption);
+
+            Option tDriverOption = new Option("tdrv", TRGT_DRIVER, true, "Target Driver");
+            tDriverOption.setRequired(true);
+            _opts.addOption(tDriverOption);
+
+            Option tDriverPathOption = new Option("tdrvp", TRGT_DRIVER_PATH, true, "Target Driver Path");
+            tDriverPathOption.setRequired(true);
+            _opts.addOption(tDriverPathOption);
+
 
             parseOptions(args);
         }
