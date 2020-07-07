@@ -51,7 +51,6 @@ public class LiquiBaseCreateDb {
     /* Creates a DB and restoring schema using supplied Change Log */
 
     public static void main(String[] args) {
-
         org.apache.log4j.Logger.getRootLogger().setLevel(Level.DEBUG);
         optionsHelper = new LiquiBaseCreateDb.OptionsHelper(args);
         BasicConfigurator.configure();

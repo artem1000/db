@@ -9,6 +9,7 @@
             <column name="City" type="varchar(255)"/>
         </createTable>
     </changeSet>
+
     <changeSet author="agrinchenko (generated)" id="1591120978667-2">
         <createTable catalogName="ArtemTestDb1" schemaName="dbo" tableName="flyway_schema_history">
             <column name="installed_rank" type="int">

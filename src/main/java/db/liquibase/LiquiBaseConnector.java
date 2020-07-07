@@ -54,7 +54,6 @@ public class LiquiBaseConnector {
     private static final List<String> SCHEMAS = new ArrayList<>();
 
     public static void main(String[] args) {
-
         SCHEMAS.add("dbo");
         org.apache.log4j.Logger.getRootLogger().setLevel(org.apache.log4j.Level.OFF);
         optionsHelper = new LiquiBaseConnector.OptionsHelper(args);

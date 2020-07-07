@@ -49,7 +49,6 @@ public class LiquiBaseCloneDb {
     /* Lifts the schema off source DB and clones it on the target DB. For this case source and target are on the same VM*/
 
     public static void main(String[] args) {
-
          org.apache.log4j.Logger.getRootLogger().setLevel(org.apache.log4j.Level.OFF);
         optionsHelper = new OptionsHelper(args);
 
