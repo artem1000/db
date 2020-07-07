@@ -1,7 +1,7 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
-    <changeSet author="agrinchenko (generated)" id="1590676683742-1">
-        <createTable catalogName="ArtemTestDb" schemaName="dbo" tableName="Persons">
+    <changeSet author="agrinchenko (generated)" id="1591120978667-1">
+        <createTable catalogName="ArtemTestDb1" schemaName="dbo" tableName="Persons">
             <column name="PersonID" type="int"/>
             <column name="LastName" type="varchar(255)"/>
             <column name="FirstName" type="varchar(255)"/>
@@ -9,8 +9,8 @@
             <column name="City" type="varchar(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="agrinchenko (generated)" id="1590676683742-2">
-        <createTable catalogName="ArtemTestDb" schemaName="dbo" tableName="flyway_schema_history">
+    <changeSet author="agrinchenko (generated)" id="1591120978667-2">
+        <createTable catalogName="ArtemTestDb1" schemaName="dbo" tableName="flyway_schema_history">
             <column name="installed_rank" type="int">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="flyway_schema_history_pk"/>
             </column>
@@ -37,8 +37,8 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="agrinchenko (generated)" id="1590676683742-3">
-        <createTable catalogName="ArtemTestDb" schemaName="dbo" tableName="Accounts">
+    <changeSet author="agrinchenko (generated)" id="1591120978667-3">
+        <createTable catalogName="ArtemTestDb1" schemaName="dbo" tableName="Accounts">
             <column name="AccountID" type="int"/>
             <column name="AccountType" type="varchar(255)"/>
             <column name="Description" type="varchar(255)"/>
@@ -46,8 +46,8 @@
             <column name="Status" type="varchar(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="agrinchenko (generated)" id="1590676683742-4">
-        <createIndex catalogName="ArtemTestDb" indexName="flyway_schema_history_s_idx" schemaName="dbo" tableName="flyway_schema_history">
+    <changeSet author="agrinchenko (generated)" id="1591120978667-4">
+        <createIndex catalogName="ArtemTestDb1" indexName="flyway_schema_history_s_idx" schemaName="dbo" tableName="flyway_schema_history">
             <column name="success"/>
         </createIndex>
     </changeSet>
